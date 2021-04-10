@@ -1,0 +1,61 @@
+.login-table {
+  width: 100%;
+  height: 100vh;
+  background-color: #f4f6f9 !important;
+  align-items: center;
+  justify-content: center;
+}
+.login-content {
+  border: 1px solid #cccccc;
+  box-shadow: 0 0 15px #cccccc;
+  width: 550px !important;
+  height: 380px;
+  padding: 40px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px !important;
+  padding-left: 50px !important;
+}
+.login-lable {
+  padding: 5px 20px;
+  width: 400px;
+  height: 50px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+
+  /* border: 1px solid rgb(27, 27, 79); */
+}
+.error-lable {
+  padding: 0px 20px;
+  width: 400px;
+  height: 10px;
+  color: red;
+
+  /* border-bottom: 1px solid rgb(27, 27, 79); */
+}
+.login-title {
+  color: rgb(15, 15, 77);
+  padding-bottom: 30px;
+}
+.btn-title1 {
+  margin-top: 35px;
+  margin-left: 70px;
+  width: 280px !important;
+  height: 45px;
+  background-color: rgb(15, 15, 77) !important;
+}
+.password {
+  float: left;
+}
+.forgot {
+  float: right !important;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px !important;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
