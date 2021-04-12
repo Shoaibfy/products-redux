@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import Header from './Header';
+import { Link } from 'react-router-dom';
 
 class Payment extends Component {
     render() {
@@ -25,7 +26,7 @@ class Payment extends Component {
                         </Card.Text>
 
                         <hr></hr>
-                        <Button variant="primary"  >Track Shipping</Button>
+                        <Link to='/tlist'> <Button variant="primary"  >Track Shipping</Button> </Link>
                     </Card.Body>
                 </Card>
             </div>

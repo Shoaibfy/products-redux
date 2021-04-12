@@ -1,0 +1,2 @@
+  <Button variant='dark' onClick={() => this.props.addToCartHandler({ price: 1000, name: 'iphone', users: 100 })} >Redux Button</Button>
+                                            <Button>     {this.props.cartData.name}</Button>

@@ -1,9 +1,11 @@
 
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../constants'
+import { ADD_TO_CART, INCREASE_CART_QUANTITY, DECREASE_CART_QUANTITY } from '../constants'
+
+
 const initialState = {
-    cartData: [
-    ],
-    age: 25
+    cartData: [],
+    quantity: 1,
+
 }
 
 
@@ -16,10 +18,16 @@ export default function cartItems(state = initialState, action) {
                 cartData: action.data
             }
 
-        case REMOVE_FROM_CART:
+        case INCREASE_CART_QUANTITY:
             return {
                 ...state,
-                age: action.data.age + 1
+                quantity: state.quantity + 1
+            }
+
+        case DECREASE_CART_QUANTITY:
+            return {
+                ...state,
+                quantity: state.quantity - 1
             }
 
         default:

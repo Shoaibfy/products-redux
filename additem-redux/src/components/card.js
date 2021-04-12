@@ -1,11 +1,13 @@
-import { connect } from 'react-redux'
-import { addToCart } from '../Redux/Actions/actions'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 import { Button, Card, } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 import Header from './Header';
 
 class CardItem extends Component {
@@ -36,9 +38,9 @@ class CardItem extends Component {
         return (
             <div>
                 <Header />
-                <p>Select items from list</p>
-                <input type='text' placeholder='Search...' className='m-5' value={this.state.text} onChange={this.inputValue} />
-                <div >
+                <p>Enter item, to select from the below list</p>
+                <input type='text' placeholder='Enter item name...' className='m-5' value={this.state.text} onChange={this.inputValue} />
+                <div style={{ display: 'flex', flexDirection: 'row', marginBottom: 20, flexWrap: 'wrap' }}>
 
                     {this.state.persons.filter((val) => {
                         if (this.state.text === "") {
@@ -48,51 +50,25 @@ class CardItem extends Component {
                         }
                     }).map((persons, id) =>
 
-                        <div className='fluid-container'>
-                            <div className='row'>
-                                <div className='col-md-3 m-2'  >
-                                    <Card style={{ width: '18rem' }} key={id}  >
-                                        <Card.Img variant="top" src="https://source.unsplash.com/1400x400/?sea,water" />
-                                        <Card.Body>
-                                            <Card.Title>{id + 1}  {persons.name}</Card.Title>
-                                            <Card.Text>
-                                                {persons.address.street}, {persons.address.suite}
-                                                {persons.address.zipcode}
-                                            </Card.Text>
-                                            <Link to='/details' >  <Button variant="primary"  >Add to cart</Button>  </Link>
-                                        </Card.Body>
-                                    </Card>
-                                </div>
-                                <div className='col-md-3 m-2' key={id} >
-                                    <Card style={{ width: '18rem' }} key={id}  >
-                                        <Card.Img variant="top" src="https://source.unsplash.com/1400x400/?sea,fish" />
-                                        <Card.Body>
-                                            <Card.Title>{id + 1}  {persons.name}</Card.Title>
-                                            <Card.Text>
-                                                {persons.address.street}, {persons.address.suite}
-                                                {persons.address.zipcode}
-                                            </Card.Text>
-                                            <Link to='/details' >  <Button variant="primary"  >Add to cart</Button>  </Link>
-                                        </Card.Body>
-                                    </Card>
-                                </div>
-                                <div className='col-md-3 m-2' key={id} >
-                                    <Card style={{ width: '18rem' }} key={id}  >
-                                        <Card.Img variant="top" src="https://source.unsplash.com/1400x400/?sea,tree" />
-                                        <Card.Body>
-                                            <Card.Title>{id + 1}  {persons.name}</Card.Title>
-                                            <Card.Text>
-                                                {persons.address.street}, {persons.address.suite}
-                                                {persons.address.zipcode}
-                                            </Card.Text>
-                                            <Link to='/details' >  <Button variant="primary"  >Add to cart</Button>  </Link>
-                                            <Button variant='dark' onClick={() => this.props.addToCartHandler({ price: 1000, name: 'iphone', users: 100 })} >Redux Button</Button>
-                                            <Button>     {this.props.cartData.name}</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </div>
-                            </div>
+
+                        <div style={{ width: '30%', marginRight: 20, marginLeft: 20, marginBottom: 10 }}>
+                            <Card style={{ width: '18rem' }} key={id}  >
+                                <Card.Img variant="top" src="https://source.unsplash.com/1400x400/?sea,water" />
+                                <Card.Body>
+                                    <Card.Title>{id + 1}  {persons.name}</Card.Title>
+                                    <Card.Text>
+                                        {persons.address.street}, {persons.address.suite}
+                                        {persons.address.zipcode}
+                                    </Card.Text>
+                                    <Link to='/details' >  <Button variant="primary"  >Add to cart</Button>  </Link>
+
+
+                                </Card.Body>
+                            </Card>
+
                         </div>
+
+
                     )}
 
                 </div>
@@ -103,15 +79,6 @@ class CardItem extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    cartData: state.cartItems.cartData
-
-})
 
 
-const mapDispatchToProps = dispatch => ({
-    addToCartHandler: data => dispatch(addToCart(data))
-})
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardItem)
+export default CardItem;

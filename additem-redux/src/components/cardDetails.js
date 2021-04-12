@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Header from './Header';
+import { increaseCartQuantity, decreaseQuantity } from '../Redux/Actions/actions'
 
 class CardDetails extends Component {
     constructor(props) {
@@ -35,20 +38,33 @@ class CardDetails extends Component {
                     <Card.Body>
                         <Card.Title>Episode-1</Card.Title>
                         <Card.Text>
-                            Price: <b> {this.state.price * this.state.quantity} $</b>
+                            Price: <b> {this.state.price * this.props.quantity} $</b>
                         </Card.Text>
                         <Card.Text>
-                            Total Quantity: <b> {this.state.quantity} </b>
+                            Total Quantity: <b> {this.props.quantity} </b>
                         </Card.Text>
 
                         <Link to='/card'>  <Button variant="danger"  >Remove</Button>  </Link>
                         <hr></hr>
-                        <Button variant="dark" onClick={this.increaseQuantity}  >+</Button> <Link to='/pay'>  <Button variant="primary"  >Pay</Button>  </Link>    <Button variant="dark" onClick={this.decreaseQuantity}  >-</Button>
+                        <Button variant="dark" onClick={() => this.props.increaseQuantity({ quantity: 1 })}  >+</Button> <Link to='/pay'>  <Button variant="primary"  >Pay</Button>  </Link>    <Button variant="dark" onClick={() => this.props.decreaseQuantity({ quantity: 5 })}  >-</Button>
                     </Card.Body>
                 </Card>
-            </div>
+            </div >
         )
     }
 }
 
-export default CardDetails
+const mapStateToProps = state => (
+
+    { quantity: state.cartItems.quantity }
+
+)
+
+
+const mapDispatchToProps = dispatch => ({
+    increaseQuantity: data => dispatch(increaseCartQuantity(data))
+},
+    { decreaseQuantity: data => dispatch(decreaseQuantity(data)) })
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardDetails)
